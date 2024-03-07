@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+</head>
+<body>
+  <main>
+    <div [formGroup]="formGroup" id="form_container">
+      <h1>Feedback Form</h1>
+      <div>
+        <label for="email" id="e_label">Email</label><sup id="astric">*</sup><br />
+        <input
+          matInput
+          name="email"
+          placeholder="Enter your email"
+          formControlName="emailField"
+          id="e_input"
+          required
+        />
+        <mat-error *ngIf="emailField.invalid" id="emerr">{{ getErrorMessage(emailField) }}</mat-error><br><br>
+        <label for="description" id="f_label">Feedback</label><sup id="astric">*</sup><br />
+        <textarea
+          matInput
+          name="feedback"
+          placeholder="Please provide your feedback here"
+          formControlName="feedbackField"
+          id="f_input"
+          required
+        ></textarea>
+        <mat-error *ngIf="feedbackField.invalid" id="fberr">{{ getErrorMessage(feedbackField) }}</mat-error>
+      </div>
+      <br><br>
+      <button mat-raised-button (click)="onSubmit()" id="sub_button" [disabled]="formGroup.invalid">Submit Feedback</button><br>
+    </div>
+  </main>
+</body>
+</html>
